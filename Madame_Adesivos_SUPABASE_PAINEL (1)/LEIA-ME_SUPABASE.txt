@@ -1,0 +1,27 @@
+MADAME ADESIVOS — INTEGRACAO SUPABASE
+
+1. No Supabase, SQL Editor > New query, rode CRIAR_TABELA_SUPABASE.sql uma unica vez.
+2. Confira que criou o usuario em Authentication > Users e o autorizou em public.admins.
+3. Abra config.js e substitua COLE_AQUI_SUA_PUBLISHABLE_KEY pela Publishable key (sb_publishable_...).
+   NUNCA use secret key, senha, database password ou service_role.
+4. Mantenha index.html, config.js e as pastas imagens/ e videos/ juntas.
+5. Publique a pasta toda na RAIZ do repositorio GitHub Pages, ou na Vercel como site estatico.
+6. No site, clique Area da loja > digite o email e senha do usuario Authentication.
+7. Se o Supabase ainda estiver vazio, clique UMA VEZ em Importar catalogo atual para o Supabase.
+8. Depois disso, editar produtos e enviar novas fotos/videos pelo painel salva no Supabase, sem novo deploy.
+9. Confira os produtos: 4 ainda nao possuem foto identificada.
+
+IMPORTANTE: Fotos antigas contidas em imagens/ e videos/ ainda sao servidas pelo GitHub/Vercel. Novas
+fotos/videos enviados pelo painel ficam no Supabase Storage. NAO remova as pastas antigas sem migrar
+as referencias para o Supabase Storage.
+
+A integracao usa a tabela shop_state para guardar o catalogo completo em um unico registro JSON,
+para preservar as funcoes existentes sem reescrever tudo. As tabelas products e product_media criadas
+antes permanecem disponiveis para futura normalizacao, mas nao sao usadas nesta versao.
+
+O usuario deve ter permisoes em storage.objects, conforme SQL anterior. Se uploads falharem,
+verifique politica e limites de arquivo em Storage.
+
+TESTES NECESSARIOS: verificar login, importacao, troca de preco, upload de foto e video,
+carregamento em outro dispositivo e publicacao. Nao foi possivel executar testes conectados
+sem acesso autenticado a sua conta.
